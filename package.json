@@ -1,0 +1,21 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "andparsons",
+  "license": "Unlicense",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "bs-html-injector": "^3.0.3",
+    "postcss-cli": "^3.2.0",
+    "postcss-cssnext": "^2.10.0",
+    "postcss-import": "^9.1.0",
+    "postcss-simple-vars": "^3.1.0",
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "scripts": {
+    "watch:styles": "postcss --local-plugins -u postcss-import -u postcss-simple-vars -u postcss-cssnext --postcss-cssnext--browsers \"last 2 versions\" -p postcss-scss -m file -o dist/_/s.css src/styles/main.scss & postcss -u -w",
+    "watch:templates": "pug --pretty src/templates/index.pug -o dist -w",
+    "bs": "browser-sync start --server 'dist' --files 'dist/_/*.css' --plugins bs-html-injector?files[]=dist/*.html & npm run watch:styles & npm run watch:templates"
+  }
+}
